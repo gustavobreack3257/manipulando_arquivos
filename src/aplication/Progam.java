@@ -7,14 +7,9 @@ import java.io.IOException;
 public class Progam {
 
 	public static void main(String[] args) {
-		String path = "c:\\temp\\in.txt";
-		FileReader fr = null;
-		BufferedReader br = null;
+		String path = "c:\\temp\\in.txt";		
 		
-		try {
-			fr = new FileReader(path);
-			br = new BufferedReader(fr);
-			
+		try (BufferedReader br = new BufferedReader(new FileReader(path))){
 			String line = br.readLine();
 			
 			while(line != null) {
@@ -25,35 +20,5 @@ public class Progam {
 		catch(IOException e){
 			System.out.println("Error: " + e.getMessage());
 		}
-		finally {
-			try {
-				if(fr != null){
-					fr.close();
-				}
-				if(br != null) {
-					br.close();
-				}
-			}
-			catch(IOException e){
-				e.printStackTrace();
-			}
-		}
 	}
-		/*File file = new File("c:\\temp\\in.txt");
-		Scanner sc = null;
-		try {
-			sc = new Scanner(file);
-			while(sc.hasNextLine()) {
-				System.out.println(sc.nextLine());
-			}
-		}
-		catch(IOException e) {
-			System.out.println("Error: " + e.getMessage());
-		}
-		finally {
-			if(sc != null) {
-				sc.close();
-			}
-		}
-		*/
 }
