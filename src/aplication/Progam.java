@@ -8,27 +8,16 @@ public class Progam {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner( System.in);
 		
-		System.out.println("Enter a folder path: ");
+		System.out.println("Enter a file path: ");
 		String strPath = sc.nextLine();
 		
 		File path = new File(strPath);
-		// Percorre todas as pastas, dentro da pasta declarada.
-		File[] folders = path.listFiles(File::isDirectory);
-		System.out.println("Folders: ");
-		for(File folder : folders) {
-			System.out.println(folder);
-		}
-		
-		File[] files = path.listFiles(File::isFile);
-		System.out.println("Files: ");
-		for(File file : files) {
-			System.out.println(file);
-		}
-		// cria uma sub pasta
-		boolean sucess = new File(strPath + "\\subdir").mkdir();
-		System.out.println("Directory created sucess" + sucess);
-		
-		
+		//nome do arquivo
+		System.out.println("getName: " + path.getName());
+		//parte do caminho do arquivo
+		System.out.println("getParent" + path.getParent());
+		//caminho completo do arquivo
+		System.out.println("getPath" + path.getPath());
 		sc.close();
 	}
 		
